@@ -3,22 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
+import MyDmGrid from './MyDmGrid';
+
 function App() {
     return (
     <div className="App">
-        <header className="App-header">
-        <p>
-            Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
-            Learn React
-        </a>
-        </header>
+        <MyDmGrid />
     </div>
     );
 }
