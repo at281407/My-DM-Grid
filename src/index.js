@@ -2,18 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
 
-import MyDmGrid from './MyDmGrid';
+import {App} from './Components/_styles/App';
 
-function App() {
+import AppMenuBar from './Components/structures/AppMenuBar';
+import AppViewMount from './Components/views/AppViewMount';
+
+function AppContainer() {
     return (
-    <div className="App">
-        <MyDmGrid />
-    </div>
+    <BrowserRouter>
+    <App>
+        <AppMenuBar />
+        <AppViewMount />
+    </App>
+    </BrowserRouter>
     );
 }
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<AppContainer />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
