@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+import configureStore from './-stores/store';
+
 
 import {App} from './Components/_styles/App';
 
@@ -12,12 +14,14 @@ import AppViewMount from './Components/views/AppViewMount';
 
 function AppContainer() {
     return (
+    <Provider store={configureStore}>
     <BrowserRouter>
     <App>
         <AppMenuBar />
         <AppViewMount />
     </App>
     </BrowserRouter>
+    </Provider>
     );
 }
 
