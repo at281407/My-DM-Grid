@@ -1,8 +1,8 @@
 let initState = {
-    gridSize: 53,
-    gridHeight: 53,
-    gridWidth: 53,
-    gridColor: "#FFFFFF",
+    gridSize: 100,
+    gridHeight: 100,
+    gridWidth: 100,
+    gridColor: "#3F3F3F",
     cellSize: "15px"
 }
 

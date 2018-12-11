@@ -10,7 +10,7 @@ class CurrGridView extends Component {
   render () {
     return (
       <CurrGrid>
-         <Grid width={30} height={30} />
+         <Grid width={this.props.gridWidth} height={this.props.gridHeight} />
          <Card />
       </CurrGrid>
     );
