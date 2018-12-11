@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {connect} from "react-redux";
 
 import Grid from "../../structures/Grid";
 import Card from "../../structures/Card";
@@ -9,11 +10,16 @@ class CurrGridView extends Component {
   render () {
     return (
       <CurrGrid>
-         <Grid />
+         <Grid width={30} height={30} />
          <Card />
       </CurrGrid>
     );
   }
 }
 
-export default CurrGridView
+export default connect(
+  (state) => ({
+      gridWidth: state.gridSettingsReducer.gridWidth,
+      gridHeight: state.gridSettingsReducer.gridHeight,
+  })
+  )(CurrGridView)

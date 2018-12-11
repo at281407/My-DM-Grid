@@ -4,6 +4,7 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import {ThemeProvider} from 'styled-components';
 import configureStore from './-stores/store';
 
 
@@ -14,13 +15,13 @@ import AppViewMount from './Components/views/AppViewMount';
 
 function AppContainer() {
     return (
-    <Provider store={configureStore}>
-    <BrowserRouter>
-    <App>
-        <AppMenuBar />
-        <AppViewMount />
-    </App>
-    </BrowserRouter>
+    <Provider store={configureStore()}>
+        <BrowserRouter>
+            <App>
+                <AppMenuBar />
+                <AppViewMount />
+            </App>
+        </BrowserRouter>
     </Provider>
     );
 }

@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux';
 
-export default combineReducers({
+import {gridSettingsReducer} from './gridSettingsReducer';
 
+export default combineReducers({
+    gridSettingsReducer
 });
