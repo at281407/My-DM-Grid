@@ -6,6 +6,21 @@ import Cell from '../blocks/Cell';
 import { CurrGrid } from '../_styles/views/Curr-Grid';
 
 class Grid extends React.Component {
+
+  setPosIdentifier = (row, col) => {
+    if(col === 0){
+      return "leftSide";
+    }     
+    else if(row === 0){
+      return "topSide";
+    }
+    else if(col === this.props.height){
+      return "rightSide";
+    }
+    else if(row === this.props.width){
+      return "bottomSide";
+    }
+  }
   
   initGrid = () => {
     var g = [];
@@ -13,8 +28,12 @@ class Grid extends React.Component {
     for(var i = 0; i < this.props.width; i++){
       g[i] = new Array(this.props.height);
       for(var j = 0; j < this.props.height; j++){
-        var cellClass = "gridCell row-"+i+"-col-"+j;
-          g[i][j] = cellClass;
+        var cellKey = "row-"+i+"-col-"+j;
+        var cellProps = {
+          cellKey: "row-"+i+"-col-"+j,
+          posIdentifier: this.setPosIdentifier(i, j)
+        }
+        g[i][j] = cellProps;
       }
     }
     return g;
@@ -32,12 +51,15 @@ class Grid extends React.Component {
     let grid = this.initGrid();
 
     return (
-      <CurrGrid.Grid gridSize={this.props.gridSize} cellSize="15px">
-        {grid.map(rows => {
-        return rows.map(columns => (
-          //<Cell />
-          <Cell key={columns} />
-        ))
+      <CurrGrid.Grid 
+        gridSize={this.props.gridSize} 
+        gridWidth={this.props.gridWidth} 
+        gridHeight={this.props.gridHeight}
+        cellSize="15px">
+          {grid.map(rows => {
+          return rows.map(columns => (
+            <Cell key={columns.cellKey} cellProp={columns.cellProps ? columns.cellProps : ""} />
+          ))
         })}
       </CurrGrid.Grid>
     );
@@ -47,6 +69,8 @@ class Grid extends React.Component {
 export default connect(
   (state) => ({
       gridSize: state.gridSettingsReducer.gridSize,
+      gridWidth: state.gridSettingsReducer.gridWidth,
+      gridHeight: state.gridSettingsReducer.gridHeight,
       cellSize: state.gridSettingsReducer.cellSize
   })
   )(Grid);

@@ -1,7 +1,7 @@
 let initState = {
-    gridSize: 100,
-    gridHeight: 100,
-    gridWidth: 100,
+    gridSize: 30,
+    gridHeight: 33,
+    gridWidth: 40,
     gridColor: "#3F3F3F",
     cellSize: "15px"
 }
